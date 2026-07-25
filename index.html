@@ -209,14 +209,13 @@
                 network.
               </p>
               <p>
-                Built the protocol and decision stack as portable, hardware-independent C
-                with 7,737 passing host checks under strict warnings. Recovered and validated
-                BACS framing and CRC behavior against official tools and 125,323 captured
-                Reader/Simulator frames. The F401 devkit firmware now interoperates with the
-                official Generex Module Reader with zero CRC errors. Separately, Reader-profile
-                request replay remained byte-correct while non-blocking diagnostics streamed
-                over SWD. G071 memory and electrical integration plus optical calibration
-                remain in progress.
+                Built the firmware in portable C with 8,316 automated checks under strict
+                compiler warnings. Matched BACS messages and CRCs across 125,323 frames
+                captured from official Generex tools, then ran the firmware on an F401
+                dev kit that the official Module Reader could poll like a normal sensor
+                module. Hardware tests also confirmed address assignment and saved
+                settings, safe recovery from a failed save, three-sensor ranging, and
+                36,429 live internal-temperature readings without failure.
               </p>
             </div>
           </li>
