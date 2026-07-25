@@ -1,12 +1,28 @@
 const stage = document.getElementById("stage");
 const scene = document.getElementById("die-scene");
+const chipPackage = document.querySelector(".die-pkg");
 const blocks = document.querySelectorAll("button.block[data-section]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const phoneLayout = window.matchMedia("(max-width: 700px)");
 
 const ZOOM_MS = 520;
 let openSection = null;
 let openTimer = null;
 let closeTimer = null;
+
+function fitChipPackage() {
+  if (!chipPackage) return;
+  const bounds = scene.getBoundingClientRect();
+  const aspectRatio = phoneLayout.matches ? 4 / 5 : 5 / 4;
+  const size = window.ChipLayout.calculateChipSize({
+    availableWidth: bounds.width,
+    availableHeight: bounds.height,
+    aspectRatio,
+  });
+
+  chipPackage.style.width = `${size.width}px`;
+  chipPackage.style.height = `${size.height}px`;
+}
 
 function panelFor(id) {
   return document.getElementById(`panel-${id}`);
@@ -129,8 +145,15 @@ window.addEventListener("popstate", () => {
 });
 
 window.addEventListener("resize", () => {
+  fitChipPackage();
   if (openSection) applyZoom(openSection);
 });
+
+fitChipPackage();
+if ("ResizeObserver" in window) {
+  new ResizeObserver(fitChipPackage).observe(scene);
+}
+document.fonts?.ready.then(fitChipPackage);
 
 // Deep link: open the section instantly, no zoom animation.
 const initial = location.hash.slice(1);
