@@ -13,7 +13,8 @@
 - Preserve the existing chip-floorplan design, project-row format, navigation, and interactions.
 - Use `/Users/bhrugusetlur/dev/spotify-project` as the source of truth.
 - Link to `https://github.com/bhrugusetlur-art/spotify-sorting`.
-- Do not modify `styles.css` or `script.js`.
+- Change only the GPU grid dimensions in `styles.css`; do not modify
+  `script.js` or other styling.
 - Reuse the existing responsive `work-row work-row-media` structure.
 
 ---
@@ -25,6 +26,7 @@
 - Create: `images/mood-sorter-dashboard.png`
 - Modify: `index.html:72-80`
 - Modify: `index.html:314-342`
+- Modify: `styles.css:409-414`
 
 **Interfaces:**
 - Consumes: the Projects chip block and Software subsection in `index.html`; the source dashboard image at `/Users/bhrugusetlur/dev/spotify-project/docs/images/mood-sorter-dashboard.png`
@@ -96,4 +98,9 @@ Expected: all portfolio tests pass with zero failures.
 
 Run: `git diff --check && git diff -- index.html tests/portfolio-content.test.js && git status --short`
 
-Confirm the PNG exists, `styles.css` and `script.js` are unchanged, and the diff contains only the approved project content, asset, test, and planning document. Dispatch an independent reviewer with the approved design, implementation plan, and diff range; address all Critical and Important findings before final verification.
+Confirm the PNG exists, `script.js` is unchanged, and the only CSS change is
+the explicit 3×3 GPU grid needed to fit all six projects. Confirm the diff
+contains only the approved project content, asset, test, grid fix, and planning
+documents. Dispatch an independent reviewer with the approved design,
+implementation plan, and diff range; address all Critical and Important
+findings before final verification.
