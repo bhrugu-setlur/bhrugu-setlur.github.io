@@ -34,7 +34,14 @@
 
 - [ ] **Step 1: Write the failing content test**
 
-Create `tests/portfolio-content.test.js` using Node's built-in test runner. Read `index.html`, isolate the Projects chip button, and assert that it advertises six cores, contains six `.core` tiles including `MOOD·SORT`, and places the Mood Sorter heading after the Software eyebrow but before LineLab. Assert the repository URL and `./images/mood-sorter-dashboard.png` reference, and require the referenced image to exist.
+Create `tests/portfolio-content.test.js` using Node's built-in test runner. Read
+`index.html`, isolate the Projects chip button, and assert that it advertises
+six cores, contains six `.core` tiles including `MOOD·SORT`, and places the Mood
+Sorter heading after the Software eyebrow but before LineLab. Read `styles.css`
+and assert that the GPU grid defines exactly six cells with no special
+first-core span. Assert the repository URL and
+`./images/mood-sorter-dashboard.png` reference, and require the referenced
+image to exist.
 
 ```js
 const test = require("node:test");
@@ -72,7 +79,8 @@ test("Mood Sorter leads software projects with its repository and local image", 
 
 Run: `node --test tests/portfolio-content.test.js`
 
-Expected: both tests fail because the sixth core and Mood Sorter row do not exist.
+Expected: all three tests fail because the sixth core, equal-cell grid, and
+Mood Sorter row do not exist.
 
 - [ ] **Step 3: Add the local image and minimal HTML**
 
