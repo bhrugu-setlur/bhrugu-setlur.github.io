@@ -49,6 +49,8 @@ alternative text. Existing navigation and zoom behavior remain unchanged.
   dashboard image path.
 - Run the test before implementation and confirm that it fails for the missing
   content.
-- Implement only the required HTML and image changes, then rerun all tests.
+- Implement only the required HTML, image, and GPU-grid changes, then rerun all
+  tests.
 - Validate that the referenced image exists and review the final diff to
-  confirm that no CSS or JavaScript changed.
+  confirm that JavaScript is unchanged and CSS changes are limited to the
+  approved 3×3 GPU grid.

@@ -88,7 +88,7 @@ Immediately below the Software eyebrow, add an existing-format `work-row work-ro
 
 Run: `node --test tests/portfolio-content.test.js`
 
-Expected: 2 tests pass.
+Expected: 3 tests pass.
 
 Run: `node --test tests/*.test.js`
 
