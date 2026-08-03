@@ -405,13 +405,11 @@ button.block:hover {
 
 .cores-2x2 { grid-template-columns: repeat(2, 1fr); }
 
-/* GPU floorplan: a 3x3 grid preserves the CPU project's 2x2 flagship core
-   while giving each of the five remaining projects a full cell. */
+/* GPU floorplan: all six projects use equal-sized cells. */
 .cores-gpu {
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 }
-.cores-gpu .core:first-child { grid-area: 1 / 1 / 3 / 3; }
 .cores-4x2 { grid-template-columns: repeat(4, 1fr); }
 
 .core {

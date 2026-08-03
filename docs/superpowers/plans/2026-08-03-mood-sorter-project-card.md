@@ -99,8 +99,8 @@ Expected: all portfolio tests pass with zero failures.
 Run: `git diff --check && git diff -- index.html tests/portfolio-content.test.js && git status --short`
 
 Confirm the PNG exists, `script.js` is unchanged, and the only CSS change is
-the explicit 3×3 GPU grid needed to fit all six projects. Confirm the diff
-contains only the approved project content, asset, test, grid fix, and planning
-documents. Dispatch an independent reviewer with the approved design,
-implementation plan, and diff range; address all Critical and Important
-findings before final verification.
+the explicit 3×2 GPU grid with equal-sized cells for all six projects. Confirm
+the diff contains only the approved project content, asset, test, grid fix, and
+planning documents. Dispatch an independent reviewer with the approved design,
+implementation plan, and diff range; address all Critical and Important findings
+before final verification.

@@ -18,31 +18,29 @@ test("projects chip exposes Mood Sorter as its sixth core", () => {
   assert.match(projectsButton, /MOOD·SORT/);
 });
 
-test("projects GPU grid reserves a full cell for every core", () => {
+test("projects GPU grid gives all six cores equal-sized cells", () => {
   const projectsButton = html.match(
     /<button class="block b-proj"[\s\S]*?<\/button>/
   )?.[0];
   const gridRule = css.match(
     /\.cores-gpu\s*{[\s\S]*?grid-template-columns:\s*repeat\((\d+),\s*1fr\);[\s\S]*?grid-template-rows:\s*repeat\((\d+),\s*1fr\);[\s\S]*?}/
   );
-  const flagshipRule = css.match(
-    /\.cores-gpu \.core:first-child\s*{\s*grid-area:\s*(\d+)\s*\/\s*(\d+)\s*\/\s*(\d+)\s*\/\s*(\d+)\s*;/
-  );
 
   assert.ok(projectsButton, "Projects chip button is missing");
   assert.ok(gridRule, "Projects GPU grid dimensions are missing");
-  assert.ok(flagshipRule, "Projects flagship core placement is missing");
 
   const coreCount = (projectsButton.match(/<span class="core">/g) || []).length;
   const gridCells = Number(gridRule[1]) * Number(gridRule[2]);
-  const flagshipCells =
-    (Number(flagshipRule[3]) - Number(flagshipRule[1])) *
-    (Number(flagshipRule[4]) - Number(flagshipRule[2]));
-  const requiredCells = coreCount - 1 + flagshipCells;
 
-  assert.ok(
-    gridCells >= requiredCells,
-    `${coreCount} cores need ${requiredCells} cells, but the GPU grid only defines ${gridCells}`
+  assert.equal(
+    gridCells,
+    coreCount,
+    `${coreCount} equal cores require exactly ${coreCount} grid cells`
+  );
+  assert.doesNotMatch(
+    css,
+    /\.cores-gpu \.core:first-child\s*{[^}]*grid-area:/,
+    "Projects grid must not give the first core a larger span"
   );
 });
 

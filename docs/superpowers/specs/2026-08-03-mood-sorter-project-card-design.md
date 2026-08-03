@@ -17,9 +17,9 @@ project's configured GitHub remote:
 
 - Update the Projects block subtitle from `GPU · 5 CORES` to
   `GPU · 6 CORES`.
-- Add a sixth project core labeled `MOOD·SORT` and expand the existing GPU
-  core grid from 4×2 to 3×3. This preserves the 2×2 flagship CPU core while
-  giving all five remaining projects a full cell.
+- Add a sixth project core labeled `MOOD·SORT` and change the existing GPU
+  core grid from 4×2 with a spanning flagship tile to 3×2 with six equal-sized
+  cells.
 - Add Mood Sorter as the first item in the Software subsection, before LineLab.
 - Use the existing `work-row work-row-media` structure, with a `Web App` tag,
   project title, concise description, repository link, and dashboard image.
@@ -53,4 +53,4 @@ alternative text. Existing navigation and zoom behavior remain unchanged.
   tests.
 - Validate that the referenced image exists and review the final diff to
   confirm that JavaScript is unchanged and CSS changes are limited to the
-  approved 3×3 GPU grid.
+  approved 3×2 equal-cell GPU grid.
