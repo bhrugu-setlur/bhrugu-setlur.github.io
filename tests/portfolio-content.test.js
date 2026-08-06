@@ -81,7 +81,7 @@ test("projects GPU grid gives all six cores equal-sized cells", () => {
   );
 });
 
-test("Mood Sorter leads software projects with its repository and local image", () => {
+test("Mood Sorter leads software projects with its repository and demo video", () => {
   const softwareIndex = html.indexOf('<p class="mono eyebrow-sub">Software</p>');
   const moodSorterIndex = html.indexOf("<h2>Mood Sorter</h2>");
   const lineLabIndex = html.indexOf("<h2>LineLab</h2>");
@@ -100,10 +100,8 @@ test("Mood Sorter leads software projects with its repository and local image", 
     moodSorterArticle,
     /https:\/\/github\.com\/bhrugusetlur-art\/spotify-sorting/
   );
-  assert.match(moodSorterArticle, /src="\.\/images\/mood-sorter-dashboard\.png"/);
-  assert.match(
-    moodSorterArticle,
-    /alt="Mood Sorter dashboard showing five generated Spotify playlists"/
-  );
-  assert.ok(fs.existsSync(path.join(root, "images/mood-sorter-dashboard.png")));
+  assert.match(moodSorterArticle, /src="\.\/videos\/mood-sorter-demo\.mp4"/);
+  assert.match(moodSorterArticle, /poster="\.\/images\/poster-mood-sorter-demo\.jpg"/);
+  assert.ok(fs.existsSync(path.join(root, "videos/mood-sorter-demo.mp4")));
+  assert.ok(fs.existsSync(path.join(root, "images/poster-mood-sorter-demo.jpg")));
 });
