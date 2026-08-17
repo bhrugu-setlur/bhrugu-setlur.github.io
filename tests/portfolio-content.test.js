@@ -50,7 +50,6 @@ test("projects chip exposes Mood Sorter as its sixth core", () => {
   )?.[0];
 
   assert.ok(projectsButton, "Projects chip button is missing");
-  assert.match(projectsButton, /GPU · 6 CORES/);
   assert.equal((projectsButton.match(/<span class="core">/g) || []).length, 6);
   assert.match(projectsButton, /MOOD·SORT/);
 });

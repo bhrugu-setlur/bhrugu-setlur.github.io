@@ -1,16 +1,17 @@
+/* Paper theme: black ink on white, drawn like a schematic sheet. */
 :root {
-  --bg: #060608;
-  --surface: rgba(255, 255, 255, 0.035);
-  --surface-strong: #101218;
-  --text: #f4f5f8;
-  --muted: #969cab;
-  --muted-strong: #c2c7d2;
-  --line: rgba(255, 255, 255, 0.1);
-  --line-strong: rgba(255, 255, 255, 0.2);
-  --accent: #6ea0ff;
-  --gold: #d6b46e;
-  --iri: linear-gradient(115deg, #56e7cf 0%, #5b95ff 34%, #a276ff 66%, #ff74d0 100%);
-  --mono: "Space Mono", ui-monospace, monospace;
+  --paper: #ffffff;
+  --sheet: #fbfbfa;
+  --ink: #101010;
+  --ink-2: #3d3d3d;
+  --ink-3: #6e6e6e;
+  --rule: #d9d9d6;
+  --rule-2: #a6a6a2;
+  --fill: rgba(16, 16, 16, 0.04);
+  --hatch: rgba(16, 16, 16, 0.07);
+  --grid: rgba(16, 16, 16, 0.05);
+  --led: #56e7cf;
+  --mono: "Courier Prime", ui-monospace, monospace;
   --zoom-ms: 520ms;
   --zoom-ease: cubic-bezier(0.2, 0.55, 0.2, 1);
 }
@@ -26,21 +27,20 @@ body {
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: var(--mono);
   -webkit-font-smoothing: antialiased;
-  color: var(--text);
-  background-color: var(--bg);
+  color: var(--ink);
+  background-color: var(--sheet);
   background-image:
-    radial-gradient(circle at 12% -8%, rgba(91, 149, 255, 0.2), transparent 34%),
-    radial-gradient(circle at 92% 4%, rgba(162, 118, 255, 0.18), transparent 32%),
-    radial-gradient(circle at 78% 96%, rgba(86, 231, 207, 0.12), transparent 40%),
-    radial-gradient(circle at 8% 92%, rgba(255, 116, 208, 0.1), transparent 36%),
-    linear-gradient(180deg, #08090c 0%, #060608 60%, #050506 100%);
+    linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 32px),
+    linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 32px);
+  background-size: 32px 32px;
   overflow: hidden;
 }
 
 ::selection {
-  background: rgba(91, 149, 255, 0.32);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 a {
@@ -50,7 +50,7 @@ a {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
 
@@ -80,22 +80,19 @@ img {
 
 .brand {
   display: inline-block;
-  font-weight: 800;
-  font-size: clamp(1.7rem, 4vw, 2.6rem);
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.95rem);
+  letter-spacing: 0.02em;
   line-height: 1.1;
-  background: var(--iri);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--ink);
 }
 
 .subline {
-  margin: 0.35rem 0 0;
-  font-size: 0.72rem;
+  margin: 0.4rem 0 0;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--muted-strong);
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
 }
 
 .top-links {
@@ -103,25 +100,23 @@ img {
   top: 1.1rem;
   right: clamp(1rem, 3vw, 2rem);
   display: flex;
-  gap: 0.6rem;
-  font-size: 0.7rem;
+  gap: 0.5rem;
+  font-size: 0.66rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 
 .top-links a {
-  padding: 0.5rem 0.95rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--muted-strong);
-  transition: color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--rule-2);
+  color: var(--ink-2);
+  transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
 }
 
 .top-links a:hover {
-  color: var(--text);
-  border-color: var(--accent);
-  box-shadow: 0 0 16px rgba(110, 160, 255, 0.35);
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
 }
 
 .die-scene {
@@ -153,32 +148,11 @@ body.zoomed button.block {
 .hint {
   align-self: center;
   margin: 0.35rem 0 0;
-  padding: 0.6rem 1.25rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--surface);
   text-align: center;
-  font-size: 0.78rem;
+  font-size: 0.66rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--text);
-  box-shadow: 0 0 20px rgba(110, 160, 255, 0.15);
-}
-
-.hint::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--iri);
-  margin-right: 0.6rem;
-  vertical-align: middle;
-  animation: hint-pulse 2.2s ease-in-out infinite;
-}
-
-@keyframes hint-pulse {
-  50% { opacity: 0.35; }
+  letter-spacing: 0.2em;
+  color: var(--ink-3);
 }
 
 body.zoomed .stage {
@@ -198,52 +172,45 @@ body.zoomed .hint {
   width: min(94%, 1020px);
   max-height: 100%;
   aspect-ratio: 5 / 4;
-  background: linear-gradient(150deg, #15171d 0%, #0c0d11 60%, #0a0b0e 100%);
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
   padding: clamp(12px, 1.8vmin, 20px);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.55),
-    0 0 48px rgba(91, 149, 255, 0.3),
-    0 0 130px rgba(162, 118, 255, 0.24),
-    0 0 220px rgba(86, 231, 207, 0.14);
 }
 
 .pads {
   position: absolute;
   pointer-events: none;
-  filter: drop-shadow(0 0 5px rgba(214, 180, 110, 0.9));
 }
 
 .pads-top,
 .pads-bottom {
   left: 26px;
   right: 26px;
-  height: 5px;
+  height: 4px;
   background: repeating-linear-gradient(
     90deg,
-    rgba(255, 214, 130, 0.75) 0 6px,
+    var(--rule-2) 0 6px,
     transparent 6px 15px
   );
 }
 
-.pads-top { top: 4px; }
-.pads-bottom { bottom: 4px; }
+.pads-top { top: 5px; }
+.pads-bottom { bottom: 5px; }
 
 .pads-left,
 .pads-right {
   top: 26px;
   bottom: 26px;
-  width: 5px;
+  width: 4px;
   background: repeating-linear-gradient(
     0deg,
-    rgba(255, 214, 130, 0.75) 0 6px,
+    var(--rule-2) 0 6px,
     transparent 6px 15px
   );
 }
 
-.pads-left { left: 4px; }
-.pads-right { right: 4px; }
+.pads-left { left: 5px; }
+.pads-right { right: 5px; }
 
 /* ---------- Die floorplan ---------- */
 
@@ -253,12 +220,12 @@ body.zoomed .hint {
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(10, 1fr);
   gap: clamp(3px, 0.55vmin, 6px);
-  background:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 8px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 8px),
-    #0a0c12;
-  border: 1px solid var(--line-strong);
-  border-radius: 4px;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 8px),
+    linear-gradient(90deg, var(--grid) 0 1px, transparent 1px 8px);
+  background-size: 8px 8px;
+  border: 1px solid var(--rule-2);
   padding: clamp(4px, 0.7vmin, 8px);
 }
 
@@ -269,128 +236,92 @@ body.zoomed .hint {
   align-items: flex-start;
   margin: 0;
   padding: clamp(5px, 1vmin, 12px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 3px;
+  border: 1px solid var(--ink);
   font: inherit;
-  color: var(--text);
+  color: var(--ink);
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.03);
-  background-image:
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 4px);
+  background-color: var(--fill);
   overflow: hidden;
 }
 
 button.block {
   cursor: pointer;
-  background-color: rgb(var(--c) / 0.14);
-  background-image:
-    linear-gradient(160deg, rgb(var(--c) / 0.34), rgb(var(--c) / 0.05) 70%),
-    repeating-linear-gradient(0deg, rgb(var(--c) / 0.16) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(90deg, rgb(var(--c) / 0.16) 0 1px, transparent 1px 4px);
-  border-color: rgb(var(--c) / 0.68);
-  box-shadow:
-    0 0 22px rgb(var(--c) / 0.24),
-    inset 0 0 34px rgb(var(--c) / 0.14);
-  transition: filter 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  transition: background-color 160ms ease, color 160ms ease;
 }
 
-/* Clickability affordances: corner expand glyph + slow breathing glow */
+/* Hover inverts the block, the way a selected net is highlighted on a drawing. */
+button.block:hover,
+button.block:focus-visible {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+/* Reference-designator corner mark doubles as the "opens a section" affordance. */
 button.block::after {
-  content: "↗";
+  content: "→";
   position: absolute;
-  top: clamp(4px, 0.8vmin, 9px);
+  top: clamp(4px, 0.9vmin, 10px);
   right: clamp(6px, 1.1vmin, 13px);
-  font-size: clamp(0.75rem, 1.7vmin, 1.05rem);
-  font-weight: 600;
+  font-family: var(--mono);
+  font-size: clamp(0.7rem, 1.5vmin, 0.95rem);
   line-height: 1;
-  color: rgb(var(--c) / 0.85);
-  text-shadow: 0 0 8px rgb(var(--c) / 0.7);
-  transition: transform 200ms ease, color 200ms ease;
+  transition: transform 160ms ease;
 }
 
 button.block:hover::after {
-  color: rgb(var(--c) / 1);
-  transform: translate(2px, -2px);
-}
-
-/* Breathing glow lives on an opacity-animated overlay: opacity runs on the
-   compositor, unlike box-shadow keyframes which repaint every frame. */
-@keyframes block-breathe {
-  50% { opacity: 1; }
-}
-
-button.block::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 55%, rgb(var(--c) / 0.26), transparent 72%);
-  opacity: 0;
-  pointer-events: none;
-  will-change: opacity;
-  animation: block-breathe 3.4s ease-in-out infinite;
-}
-
-.b-proj::before    { animation-delay: 0.7s; }
-.b-about::before   { animation-delay: 1.4s; }
-.b-school::before  { animation-delay: 2.1s; }
-.b-contact::before { animation-delay: 2.8s; }
-
-body.zoomed button.block::before {
-  animation-play-state: paused;
-}
-
-button.block .b-name {
-  text-shadow: 0 0 16px rgb(var(--c) / 0.85);
-}
-
-button.block .b-sub {
-  color: rgb(var(--c) / 0.95);
-  text-shadow: 0 0 10px rgb(var(--c) / 0.5);
-}
-
-button.block:hover {
-  filter: brightness(1.2);
-  border-color: rgb(var(--c) / 1);
-  box-shadow:
-    0 0 46px rgb(var(--c) / 0.5),
-    inset 0 0 30px rgb(var(--c) / 0.22);
+  transform: translateX(2px);
 }
 
 .b-name {
   font-weight: 700;
-  font-size: clamp(0.72rem, 1.7vmin, 1.05rem);
+  font-size: clamp(0.68rem, 1.6vmin, 0.98rem);
   letter-spacing: 0.01em;
   line-height: 1.1;
 }
 
 .b-sub {
-  margin-top: 2px;
-  font-size: clamp(0.5rem, 1.1vmin, 0.7rem);
+  margin-top: 3px;
+  font-size: clamp(0.5rem, 1.05vmin, 0.66rem);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--muted);
+  letter-spacing: 0.18em;
+  opacity: 0.62;
 }
 
-/* block placement + hue */
-.b-exp     { grid-area: 1 / 1 / 5 / 7;   --c: 91 149 255; }
-.b-proj    { grid-area: 1 / 7 / 6 / 13;  --c: 162 118 255; }
+/* Blocks with no core tiles get a hatch fill so they read as regions, not gaps. */
+.b-about,
+.b-contact {
+  background-image: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, currentColor 9%, transparent) 0 1px,
+    transparent 1px 8px
+  );
+}
+
+/* block placement */
+.b-exp     { grid-area: 1 / 1 / 5 / 7; }
+.b-proj    { grid-area: 1 / 7 / 6 / 13; }
 .b-fabric  { grid-area: 5 / 1 / 6 / 7; }
-.b-about   { grid-area: 6 / 1 / 9 / 5;   --c: 255 196 110; }
-.b-school  { grid-area: 6 / 5 / 9 / 13;  --c: 86 231 207; }
-.b-contact { grid-area: 9 / 1 / 11 / 13; --c: 255 116 208; }
+.b-about   { grid-area: 6 / 1 / 9 / 5; }
+.b-school  { grid-area: 6 / 5 / 9 / 13; }
+.b-contact { grid-area: 9 / 1 / 11 / 13; }
 
 .b-fabric {
   align-items: center;
   justify-content: center;
-  border-style: dashed;
+  border-color: var(--rule-2);
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--hatch) 0 1px,
+    transparent 1px 8px
+  );
 }
 
 .die-mark {
-  font-size: clamp(0.42rem, 1.1vmin, 0.68rem);
+  font-size: clamp(0.42rem, 1vmin, 0.62rem);
   text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: rgba(214, 180, 110, 0.8);
+  letter-spacing: 0.34em;
+  color: var(--ink-2);
   white-space: nowrap;
 }
 
@@ -414,12 +345,12 @@ button.block:hover {
 
 .core {
   position: relative;
-  border: 1px solid rgb(var(--c, 255 255 255) / 0.55);
-  border-radius: 2px;
-  box-shadow: inset 0 0 12px rgb(var(--c, 255 255 255) / 0.14);
-  background-image:
-    repeating-linear-gradient(0deg, rgb(var(--c, 255 255 255) / 0.16) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgb(var(--c, 255 255 255) / 0.12) 0 1px, transparent 1px 5px);
+  border: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+  background-image: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, currentColor 12%, transparent) 0 1px,
+    transparent 1px 8px
+  );
 }
 
 .core i {
@@ -428,11 +359,8 @@ button.block:hover {
   bottom: 5px;
   font-family: var(--mono);
   font-style: normal;
-  font-weight: 700;
-  font-size: clamp(0.55rem, 1.35vmin, 0.85rem);
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 0 10px rgb(var(--c, 255 255 255) / 0.95);
+  font-size: clamp(0.55rem, 1.3vmin, 0.8rem);
+  letter-spacing: 0.1em;
 }
 
 /* ---------- Panels (zoomed-in sections) ---------- */
@@ -442,10 +370,7 @@ button.block:hover {
   inset: 0;
   z-index: 10;
   overflow-y: auto;
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(circle at 12% -8%, rgba(91, 149, 255, 0.12), transparent 34%),
-    linear-gradient(180deg, #08090c 0%, #060608 100%);
+  background-color: var(--sheet);
   opacity: 0;
   transition: opacity 180ms ease;
 }
@@ -456,7 +381,7 @@ button.block:hover {
 }
 
 .panel-body {
-  max-width: 880px;
+  max-width: 780px;
   margin: 0 auto;
   padding: clamp(1.25rem, 4vw, 3rem) clamp(1.25rem, 4vw, 2rem) 4.5rem;
 }
@@ -473,25 +398,22 @@ button.block:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   padding: 0;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   line-height: 1;
-  color: var(--text);
-  background: var(--surface);
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule-2);
   cursor: pointer;
-  transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease,
-    transform 200ms ease;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
 .back:hover {
-  border-color: var(--accent);
-  background: rgba(110, 160, 255, 0.14);
-  box-shadow: 0 0 18px rgba(110, 160, 255, 0.35);
-  transform: translateX(-3px);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 
 .panel:focus {
@@ -501,68 +423,67 @@ button.block:hover {
 .panel-tag {
   font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--muted);
+  letter-spacing: 0.22em;
+  color: var(--ink-3);
 }
 
 .panel h1 {
   margin: 0 0 1.75rem;
-  font-size: clamp(2rem, 6vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  width: fit-content;
-  background: var(--iri);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--ink);
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink);
 }
 
 .panel h2 {
   margin: 0 0 0.4rem;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 700;
 }
 
 .panel p {
   line-height: 1.65;
-  color: var(--muted-strong);
+  color: var(--ink-2);
 }
 
 .eyebrow-sub {
   margin: 2.75rem 0 1rem;
-  font-size: 0.66rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.64rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--muted);
+  letter-spacing: 0.22em;
+  color: var(--ink-3);
 }
 
 .text-link {
   display: inline-block;
   margin-top: 0.35rem;
   font-family: var(--mono);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--accent);
-  border-bottom: 1px solid rgba(110, 160, 255, 0.35);
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule-2);
   padding-bottom: 2px;
 }
 
 .text-link:hover {
-  border-bottom-color: var(--accent);
+  border-bottom-color: var(--ink);
 }
 
 .tag {
   display: inline-block;
   margin-bottom: 0.6rem;
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.28rem 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-3);
+  border: 1px solid var(--rule);
+  padding: 0.26rem 0.6rem;
 }
 
 /* About */
@@ -575,8 +496,7 @@ button.block:hover {
 
 .about-photo {
   width: 100%;
-  border-radius: 12px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--rule-2);
 }
 
 /* Register debug LEDs, like on the CPU project's Basys 3 board */
@@ -590,49 +510,46 @@ button.block:hover {
 .led {
   width: 11px;
   height: 11px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid var(--line);
+  background: transparent;
+  border: 1px solid var(--rule-2);
   transition: background 150ms ease, box-shadow 150ms ease;
 }
 
 .led.on {
-  background: #56e7cf;
-  border-color: #56e7cf;
+  background: var(--led);
+  border-color: var(--led);
   box-shadow: 0 0 12px rgba(86, 231, 207, 0.85);
 }
 
 .about-copy p {
   margin: 0 0 1.1rem;
-  font-size: 1.02rem;
+  font-size: 1rem;
 }
 
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
   margin-top: 2.5rem;
 }
 
 .skills-grid > div {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  border: 1px solid var(--rule);
   padding: 1.1rem 1.2rem;
 }
 
 .skills-grid h2 {
-  font-size: 0.64rem;
+  font-size: 0.66rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--muted);
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
   margin-bottom: 0.6rem;
 }
 
 .skills-grid p {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 /* Experience */
@@ -648,23 +565,23 @@ button.block:hover {
   display: grid;
   grid-template-columns: 175px 1fr;
   gap: 1.25rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--rule);
   padding-top: 1.5rem;
 }
 
 .xp-when {
   margin: 0;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
   padding-top: 0.3rem;
 }
 
 .xp-role {
   margin: 0 0 0.6rem;
   font-size: 0.85rem;
-  color: var(--muted);
+  color: var(--ink-3);
 }
 
 .xp-body p:last-child {
@@ -673,46 +590,38 @@ button.block:hover {
 
 /* Projects */
 .datasheet {
-  border: 1px solid var(--line-strong);
-  border-radius: 14px;
-  background: var(--surface);
-  overflow: hidden;
+  border: 1px solid var(--ink);
 }
 
 .datasheet-head {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.8rem 1.4rem;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.62rem;
+  padding: 0.7rem 1.4rem;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.6rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--muted);
+  letter-spacing: 0.18em;
+  color: var(--ink-3);
 }
 
 .datasheet-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 1.75rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
   padding: 1.5rem 1.4rem 1.75rem;
 }
 
 .spec-table {
   margin: 0;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  overflow: hidden;
+  border: 1px solid var(--rule);
   align-self: start;
 }
 
 .spec-table > div {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 0.75rem;
   padding: 0.6rem 0.9rem;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.82rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.78rem;
 }
 
 .spec-table > div:last-child {
@@ -720,21 +629,20 @@ button.block:hover {
 }
 
 .spec-table dt {
-  font-family: var(--mono);
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  padding-top: 0.15rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin-bottom: 0.25rem;
 }
 
 .spec-table dd {
   margin: 0;
-  color: var(--muted-strong);
+  color: var(--ink-2);
 }
 
 .work-row {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--rule);
   padding-top: 1.75rem;
   margin-top: 1.75rem;
 }
@@ -753,15 +661,13 @@ button.block:hover {
 .work-media iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  border: 1px solid var(--rule-2);
 }
 
 .work-media video,
 .work-media img {
   width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 12px;
+  border: 1px solid var(--rule-2);
 }
 
 .work-media-pair {
@@ -776,51 +682,50 @@ button.block:hover {
 
 .work-media-pair figcaption {
   margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--muted);
+  font-size: 0.73rem;
+  color: var(--ink-3);
 }
 
-/* Schoolwork */
+/* Coursework */
 .school-meta {
   margin-top: -0.75rem;
-  font-size: 1rem;
+  font-size: 0.98rem;
 }
 
 .school-meta strong {
-  color: var(--text);
+  color: var(--ink);
 }
 
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 
 .course-chip {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  border: 1px solid var(--rule);
   padding: 0.85rem 1rem;
-  transition: border-color 200ms ease;
+  transition: border-color 160ms ease;
 }
 
 .course-chip:hover {
-  border-color: var(--line-strong);
+  border-color: var(--ink);
 }
 
 .course-chip strong {
   font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
 }
 
 .course-chip span {
-  font-size: 0.85rem;
-  color: var(--muted-strong);
+  font-size: 0.83rem;
+  color: var(--ink-2);
 }
 
 .repo-list {
@@ -828,7 +733,7 @@ button.block:hover {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 
 .repo-list li {
@@ -837,20 +742,18 @@ button.block:hover {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 10px;
+  border: 1px solid var(--rule);
   padding: 0.9rem 1.2rem;
 }
 
 .repo-list h2 {
   margin: 0;
-  font-size: 0.98rem;
+  font-size: 0.95rem;
 }
 
 /* Contact */
 .contact-lede {
-  font-size: 1.05rem;
+  font-size: 1rem;
   margin-top: -0.75rem;
 }
 
@@ -859,24 +762,24 @@ button.block:hover {
   margin: 2rem 0 0;
   padding: 0;
   display: grid;
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 
 .contact-list a {
   display: block;
   font-family: var(--mono);
-  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 1.05rem 1.3rem;
-  transition: border-color 200ms ease, color 200ms ease;
-  color: var(--muted-strong);
+  font-size: clamp(0.85rem, 2.2vw, 1.02rem);
+  border: 1px solid var(--rule);
+  padding: 1rem 1.25rem;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
 }
 
 .contact-list a:hover {
-  color: var(--text);
-  border-color: var(--accent);
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
 }
 
 /* ---------- Responsive ---------- */
@@ -911,17 +814,30 @@ button.block:hover {
   .top-links {
     position: static;
     justify-content: center;
-    gap: 1.1rem;
-    margin-top: 0.5rem;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
   }
 
-  .core i,
-  .dm-x {
+  .core i {
     display: none;
+  }
+
+  /* Tighten the tracking so the degree line holds one line down to 360px. */
+  .subline {
+    letter-spacing: 0.06em;
   }
 
   .work-media-pair {
     grid-template-columns: 1fr;
+  }
+
+  /* Mono is wider than a sans, so phones need a step down to hold a readable
+     line length. */
+  .panel p,
+  .about-copy p,
+  .contact-lede,
+  .school-meta {
+    font-size: 0.86rem;
   }
 }
 
@@ -938,7 +854,6 @@ button.block:hover {
 
   .hint {
     margin-top: 0;
-    padding-block: 0.5rem;
   }
 }
 
@@ -952,10 +867,5 @@ button.block:hover {
   body.zoomed .topbar,
   body.zoomed .hint {
     transition: none;
-  }
-
-  .hint::before,
-  button.block::before {
-    animation: none;
   }
 }
