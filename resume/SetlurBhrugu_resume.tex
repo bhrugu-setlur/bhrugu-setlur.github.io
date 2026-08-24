@@ -67,10 +67,10 @@
 
 %----------HEADER----------
 \begin{center}
-    {\Huge \scshape Bhrugu Setlur} \\ \vspace{2pt}
-    \small (925) 640-9088 $|$
+    {\huge \scshape Bhrugu Setlur} \\ \vspace{2pt}
+    \footnotesize (925) 640-9088 $|$
     \href{mailto:bhrugu.setlur@gmail.com}{bhrugu.setlur@gmail.com} $|$
-    \href{https://www.linkedin.com/in/bhrugu-setlur-931997348}{linkedin.com/in/bhrugu-setlur} $|$
+    \href{https://www.linkedin.com/in/bhrugu-setlur-931997348}{linkedin.com/in/bhrugu-setlur-931997348} $|$
     \href{https://github.com/bhrugusetlur-art}{github.com/bhrugusetlur-art} $|$
     \href{https://bhrugusetlur-art.github.io/}{bhrugusetlur-art.github.io}
 \end{center}
@@ -79,10 +79,11 @@
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {New York University -- Tandon School of Engineering}{New York, NY}
-      {B.S. Electrical and Computer Engineering \(|\) GPA: 3.74 \(|\) Dean's List: all semesters, 2025--2026}{Expected May 2028}
+      {New York University Tandon School of Engineering}{New York, NY}
+      {B.S. Electrical and Computer Engineering \(|\) GPA: 3.74 \(|\) Dean's List: all semesters, 2025-2026}{Expected May 2028}
       \resumeItemListStart
-        \resumeItem{Coursework: Data Structures \& Algorithms (Python), Object-Oriented Programming (C++), Computer Architecture \& Digital Logic (Verilog)}
+        \resumeItem{Coursework: Computer Architecture \& Digital Logic (Verilog), Data Structures \& Algorithms, Object-Oriented Programming (C++)}
+        \resumeItem{Planned for Fall 2026: Signals \& Systems, Operating Systems, Embedded Systems Design}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
@@ -91,41 +92,45 @@
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Tokonoma.ai}{San Francisco, CA}
-      {Software Engineering Intern}{Jun 2026 -- Present}
+      {Generex}{San Francisco, CA}
+      {Embedded Firmware Engineer (Contract)}{Jun 2026 - Present}
       \resumeItemListStart
-        \resumeItem{Develop an AI SRE automation platform: an MCP (Model Context Protocol) server giving LLM agents natural-language access to production logs, distributed traces, and Kubernetes events.}
-        \resumeItem{Designed the vector-similarity deduplication system for the agents' knowledge base --- HNSW-indexed cosine search over pgvector embeddings flags near-duplicate incident records at save time --- adopted for the production implementation.}
-        \resumeItem{Cut agent incident-investigation time 53\% (15 to 7 turns on evals) by re-ranking semantic search to surface proven runbooks ahead of raw incident history.}
-        \resumeItem{Expanded the agent eval suite to 54 fault-injection scenarios and enriched trace search from partial spans to full call trees; closed prompt-injection, file-access, and OAuth 2.1 vulnerabilities.}
+        \resumeItem{Developing STM32G071 firmware for a battery monitor: 4 I2C time-of-flight sensors, reporting over an opto-isolated BACS bus.}
+        \resumeItem{Separated protocol and alarm logic from the drivers into portable C, covered by 8,444 host checks that run without target hardware.}
+        \resumeItem{Designed debounce, hysteresis, and confidence-over-time logic to reject false alarms from condensation, bubbles, and detached sensors.}
+        \resumeItem{Validated the BACS CRC across 125,323 frames captured from Generex's official Reader and Simulator, with 0 mismatches.}
+        \resumeItem{Fit the current firmware, excluding diagnostics, into about 12 KB of the chip's 36 KB of RAM.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Tokonoma.ai}{San Francisco, CA}
+      {Software Engineering Intern}{Jun 2026 - Aug 2026}
+      \resumeItemListStart
+        \resumeItem{Prototyped a faster vector-search path, cutting median query time 1.95x on a 20,000-chunk corpus with no measured quality loss.}
+        \resumeItem{Caught a filtered-search slowdown in review and added a tested exact-search fallback plus per-query monitoring.}
+        \resumeItem{Built a labeled benchmark to tune duplicate detection, scoring 81 configurations against matching and non-matching record pairs.}
+        \resumeItem{Built one issue-tracking service for GitHub, GitLab, Jira, and Linear that imports issues and closes them when fixes merge.}
+        \resumeItem{Reviewed the split of a 2,851-line store module, fixing clock-mismatch timeouts and stalled jobs that falsely reported healthy.}
+        \resumeItem{Fixed 5 security vulnerabilities, including prompt injection in an LLM-based extraction path.}
+        \resumeItem{Built passwordless email sign-in and a protected coming-soon dashboard for the company website.}
       \resumeItemListEnd
       {\small Tech: Python, Rust, PostgreSQL, pgvector, Kubernetes, Helm, Docker, OpenTelemetry, Quickwit, OAuth 2.1, MCP, RAG}\vspace{3pt}
 
     \resumeSubheading
-      {Generex}{San Francisco, CA}
-      {Embedded Firmware Engineer (Contract)}{Jun 2026 -- Present}
+      {Growcery \(|\) growcery.us}{New York, NY}
+      {Software Engineering Intern}{Jan 2026 - May 2026}
       \resumeItemListStart
-        \resumeItem{Developing replacement firmware for an industrial battery-monitoring sensor: an STM32 microcontroller (ARM Cortex-M0+) reads 4 laser time-of-flight sensors to detect low fluid levels and reports alarms over RS-485.}
-        \resumeItem{Wrote the protocol and alarm logic as portable, hardware-independent C, making it fully testable off-device; 354 automated checks pass before the board is even powered on.}
-        \resumeItem{Designed alarm logic that resists false alarms: readings are debounced with hysteresis, and a time-based confidence model distinguishes a genuinely low battery cell from condensation, bubbles, or a detached sensor.}
+        \resumeItem{Launched a two-sided marketplace and integrated Stripe payments with Apple Pay and automatic platform-fee collection.}
+        \resumeItem{Implemented radius-based seller search with Supabase and Mapbox, plus in-app messaging and seller listing tools.}
       \resumeItemListEnd
 
     \resumeSubheading
-      {Growcery -- growcery.us}{New York, NY}
-      {Software Engineering Intern}{Jan 2026 -- May 2026}
+      {VIP: High Performance Computing at NYU}{New York, NY}
+      {Virtual Environment Penetration Tester}{Sep 2025 - Present}
       \resumeItemListStart
-        \resumeItem{Built and launched a full-stack marketplace with buyer--seller accounts, in-app messaging, and seller listing tools.}
-        \resumeItem{Integrated Stripe marketplace payments with Apple Pay support and automated 10\% platform fee collection.}
-        \resumeItem{Implemented radius-based geolocation discovery with Supabase and Mapbox; integrated Spoonacular API; deployed on Vercel.}
-      \resumeItemListEnd
-      {\small Tech: Next.js (React, TypeScript), Node.js, Supabase, Stripe, Mapbox API, Spoonacular API, Resend API, Vercel}\vspace{3pt}
-
-    \resumeSubheading
-      {VIP -- High Performance Computing at NYU}{New York, NY}
-      {Virtual Environment Penetration Tester}{Sep 2025 -- Present}
-      \resumeItemListStart
-        \resumeItem{Executed an 8-phase attack kill chain against Google Cloud research environments (SRDEs) --- exploiting SQL injection, command injection, local file inclusion, sudo privilege escalation, and credential reuse to gain root.}
-        \resumeItem{Automated Python log-anomaly detection and MD5 hash cracking; presented severity-ranked remediation plans.}
+        \resumeItem{Ran an authorized 8-phase penetration test: scanned with nmap, then cracked MD5 password hashes pulled from an open FTP share.}
+        \resumeItem{Used SQL injection to dump the database, path traversal to read an SSH key, and command injection to open a reverse shell.}
+        \resumeItem{Recovered credentials from an exposed .git, escalated to root via a sudo misconfiguration, then reused passwords from FTP to SSH.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -135,20 +140,25 @@
   \resumeSubHeadingListStart
 
     \resumeProjectHeading
-      {\textbf{8-bit CPU with Virtual Memory \& Cache -- Verilog} $|$ \href{https://github.com/bhrugusetlur-art/cpu-design}{github.com/bhrugusetlur-art/cpu-design}}{Jun 2026 -- Present}
+      {\textbf{8-bit CPU with Virtual Memory \& Cache} $|$ \href{https://github.com/bhrugusetlur-art/cpu-design}{github.com/bhrugusetlur-art/cpu-design}}{Jun 2026 - Aug 2026}
       \resumeItemListStart
-        \resumeItem{Designed the RTL for a complete 8-bit Harvard-architecture CPU --- 12-instruction ISA, ALU, register file, control unit, datapath --- with a write-back L1 direct-mapped + L2 4-way set-associative (LRU) cache hierarchy.}
-        \resumeItem{Built a virtual memory system --- a 4-entry TLB and cache-mediated MMU with hardware page-table walks and page-fault handling; verified all 13 modules in simulation and on a Basys 3 (Artix-7) FPGA, targeting physical tapeout next.}
+        \resumeItem{Designed the RTL for an 8-bit Harvard CPU: a 12-instruction ISA, ALU, register file, control unit, and datapath, backed by a write-back cache hierarchy with a direct-mapped L1 and a 4-way set-associative L2 using LRU replacement.}
+        \resumeItem{Added virtual memory with a 4-entry TLB, hardware page-table walks, and page-fault handling, verified across 15 Verilog regression suites covering ISA operations, cache and LRU eviction, TLB walks, and frozen fault state, in simulation and on a Basys 3 FPGA.}
+        \resumeItem{Hardened the core to GDS on SkyWater 130 nm with OpenROAD: 12,778 standard cells (3,824 sequential) at about 19\% utilization, with clean DRC and antenna checks and project-deck LVS matching all 146 circuit pairs.}
+        \resumeItem{Met the 10 MHz timing target with 90.29 ns worst setup slack, an estimated 103 MHz maximum, and wrote a two-pass C++ assembler that resolves labels and emits machine code for FPGA programs.}
+        \resumeItem{\textbf{Open source:} Merged a regression test into \href{https://github.com/cocotb/cocotb/pull/5700}{\textbf{cocotb}}, a widely used Python framework for RTL verification.}
       \resumeItemListEnd
-      {\small Tech: Verilog, RTL Design, FPGA (Xilinx Artix-7), Vivado, Icarus Verilog, GTKWave, C++}\vspace{3pt}
+      {\small Tech: Verilog, RTL Design, FPGA (Xilinx Artix-7), Vivado, Icarus Verilog, cocotb, GTKWave, OpenROAD, Sky130, C++}\vspace{3pt}
 
     \resumeProjectHeading
-      {\textbf{LineLab -- NYC Transit Planning} $|$ \href{https://github.com/Tandonites/LineLab}{github.com/Tandonites/LineLab}}{Apr 2026}
+      {\textbf{LineLab} $|$ \textbf{NYC Transit Planning} $|$ \href{https://github.com/Tandonites/LineLab}{github.com/Tandonites/LineLab}}{Apr 2026}
       \resumeItemListStart
-        \resumeItem{Built a web app where users draw NYC subway corridors and simulate ridership, operating cost, and travel time.}
-        \resumeItem{Trained XGBoost models on 4 years of MTA ridership + Census/OSM data; built a NetworkX GTFS graph for shortest-path travel time, integrating NY Open Data and US Census APIs for ML inference at map-draw time.}
+        \resumeItem{Co-developed a 5-person NYC transit sandbox simulating ridership, operating cost, and travel time for proposed corridors.}
+        \resumeItem{Designed and debugged the simulation model and built the corridor-drawing interface used to run it.}
+        \resumeItem{Worked across the stack: the React and Leaflet map, the FastAPI simulation API, and the NetworkX travel-time graph.}
+        \resumeItem{Built radius selection and ridership heat maps; fixed GTFS routing by linking directional platform nodes to parent stations.}
       \resumeItemListEnd
-      {\small Tech: React 19, TypeScript, Vite, Leaflet, Python, FastAPI, NetworkX, XGBoost, MTA GTFS, NY Open Data, US Census API, OSM}\vspace{3pt}
+      {\small Tech: React, TypeScript, Vite, Leaflet, Python, FastAPI, NetworkX, MTA GTFS}\vspace{3pt}
 
   \resumeSubHeadingListEnd
 
@@ -156,18 +166,18 @@
 \section{Skills}
  \begin{itemize}[leftmargin=0.0in, label={}]
     \small{\item{
-     \textbf{Languages:} Python, C, C++, Rust, TypeScript, JavaScript, Java, C\#, SQL \\
-     \textbf{AI/ML:} RAG, semantic search, vector embeddings (pgvector), LLM agents, Model Context Protocol (MCP), prompt engineering \\
-     \textbf{Frameworks \& Tools:} React, Next.js, Node.js, FastAPI, PostgreSQL, Supabase, Kubernetes, Helm, Docker, OpenTelemetry, Git, GCP, Nmap, sqlmap \\
-     \textbf{Hardware \& Embedded:} Verilog, RTL Design, FPGA (Xilinx Artix-7), Computer Architecture, STM32 (ARM Cortex-M0+), I2C, UART/RS-485, Arduino, Circuit Design, Soldering
+     \textbf{Languages:} Verilog, C, C++, Python, Rust, TypeScript, SQL, Java, C\# \\
+     \textbf{AI/ML:} RAG, semantic search, vector embeddings (pgvector), HNSW, LLM agents, Model Context Protocol (MCP) \\
+     \textbf{Frameworks \& Tools:} React, Next.js, Node.js, FastAPI, PostgreSQL, Supabase, Kubernetes, Helm, Docker, OpenTelemetry, Git, GCP, Vercel, Nmap, sqlmap \\
+     \textbf{Hardware \& Verification:} RTL Design, ASIC Physical Design (OpenROAD, Sky130), STA, DRC, LVS, FPGA (Xilinx Artix-7), Vivado, Icarus Verilog, cocotb, GTKWave, STM32 (ARM Cortex-M0+), I2C, UART
     }}
  \end{itemize}
 
 %----------AWARDS----------
-\section{Awards \& Honors}
+\section{Awards and Honors}
  \begin{itemize}[leftmargin=0.0in, label={}]
     \small{\item{
-     AP Scholar $|$ Congressional Gold Certificate $|$ \textbf{3rd Place -- Code4City Hackathon} $|$ 6th Place, USA Fencing Div. II Nationals
+     \textbf{3rd Place, Code4City Hackathon} $|$ 6th Place, USA Fencing Div. II Nationals
     }}
  \end{itemize}
 

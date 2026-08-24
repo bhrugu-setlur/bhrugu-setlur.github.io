@@ -792,7 +792,9 @@ button.block:hover::after {
   }
 
   .about-photo {
+    display: block;
     max-width: 220px;
+    margin-inline: auto;
   }
 
   .skills-grid {

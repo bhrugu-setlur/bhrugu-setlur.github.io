@@ -174,12 +174,12 @@
         <h1>Experience</h1>
         <ol class="xp-list">
           <li class="xp-row">
-            <p class="xp-when mono">Jun 2026 — Present</p>
+            <p class="xp-when mono">Jun 2026 — Aug 2026</p>
             <div class="xp-body">
               <h2>Tokonoma.ai</h2>
               <p class="xp-role">Software Engineering Intern · San Francisco, CA</p>
               <p>
-                Building toko-mcp, an MCP server that lets AI agents like Claude Code and
+                Worked on toko-mcp, an MCP server that lets AI agents like Claude Code and
                 Cursor query production logs, distributed traces, and Kubernetes events in
                 natural language. Logs flow from an OpenTelemetry collector into Quickwit
                 for search, and investigation memories live in PostgreSQL with pgvector
@@ -187,13 +187,17 @@
                 observability backends: Tokonoma, Datadog, and Observe.
               </p>
               <p>
-                Designed the memory store's vector-similarity deduplication, tuning the
-                distance thresholds with an eval harness I built and pinning the runtime
-                config to the winning values. Result: 53% less agent time per incident
-                investigation. Also shipped file attachments for memories over presigned
-                URLs, a runbook ranking boost, and hardening for the observability tools,
-                including schema-driven field suggestions for bad queries and Kubernetes
-                event-history summarization. Python.
+                Benchmarked a faster vector-search path, measuring a 1.95x speedup in
+                median query time on a 20,000-chunk corpus with no measured quality loss,
+                and caught a filtered-search slowdown in review, adding a tested
+                exact-search fallback with per-query monitoring. Built a labeled benchmark
+                to tune the memory store's duplicate detection, scoring 81 configurations
+                against matching and non-matching record pairs. Also built a shared
+                issue-tracking service across GitHub, GitLab, Jira, and Linear; reviewed
+                the split of a 2,851-line store module and fixed clock-mismatch timeouts
+                and stalled jobs that falsely reported healthy; fixed five security
+                vulnerabilities, including prompt injection in an LLM extraction path; and
+                shipped passwordless email sign-in for the company website. Python.
               </p>
             </div>
           </li>
@@ -210,7 +214,7 @@
                 network.
               </p>
               <p>
-                Built the firmware in portable C with 8,316 automated checks under strict
+                Built the firmware in portable C with 8,444 host checks under strict
                 compiler warnings. Matched BACS messages and CRCs across 125,323 frames
                 captured from official Generex tools, then ran the firmware on an F401
                 dev kit that the official Module Reader could poll like a normal sensor
@@ -247,14 +251,17 @@
               <h2>VIP: High Performance Computing at NYU</h2>
               <p class="xp-role">Virtual Environment Penetration Tester · New York, NY</p>
               <p>
-                Penetration testing Google Cloud secure research environments. Executed an
-                8-phase attack kill chain spanning reconnaissance with Nmap and Netcat,
-                FTP exploitation, SQL injection, privilege escalation, and credential
-                reuse.
+                Ran an authorized 8-phase penetration test against a secure research lab
+                VM hosted in Google Cloud Platform (GCP), from reconnaissance to full root
+                access. Mapped services with Nmap, pulled MD5 password hashes from an
+                anonymous FTP share, and cracked them offline with a Python script.
               </p>
               <p>
-                Automated log anomaly detection in Python and presented remediation and
-                hardening plans to the research computing stakeholders.
+                Exploited the target's web app end to end: SQL injection to bypass login
+                and dump the user database, path traversal to read a private SSH key, and
+                command injection to land a reverse shell. Recovered a leaked database
+                password from an exposed .git directory, escalated to root through a sudo
+                misconfiguration, and reused the cracked passwords to pivot from FTP to SSH.
               </p>
             </div>
           </li>
@@ -348,9 +355,11 @@
             <span class="tag">Product Build</span>
             <h2>LineLab</h2>
             <p>
-              An NYC transit planning sandbox for drafting proposed subway corridors and
-              simulating ridership, cost, and travel time, powered by XGBoost models
-              trained on four years of MTA ridership, Census, and OpenStreetMap data.
+              A 5-person NYC transit planning sandbox for drafting proposed subway
+              corridors and simulating ridership, operating cost, and travel time. I built
+              the corridor-drawing interface and worked across the stack: the React and
+              Leaflet map, the FastAPI simulation API, and the NetworkX travel-time graph.
+              I also helped shape the simulation through model design and debugging.
             </p>
             <a
               class="text-link"
@@ -528,6 +537,22 @@
             <strong>MA-UY 2314</strong>
             <span>Discrete Mathematics</span>
           </a>
+        </div>
+
+        <p class="mono eyebrow-sub">Planned · Fall 2026</p>
+        <div class="course-grid">
+          <div class="course-chip">
+            <strong>Signals &amp; Systems</strong>
+            <span>Fall 2026</span>
+          </div>
+          <div class="course-chip">
+            <strong>Operating Systems</strong>
+            <span>Fall 2026</span>
+          </div>
+          <div class="course-chip">
+            <strong>Embedded Systems Design</strong>
+            <span>Fall 2026</span>
+          </div>
         </div>
 
         <p class="mono eyebrow-sub">Course repositories</p>

@@ -8,9 +8,9 @@ const root = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 
-test("resume links serve the supplied July 2026 resume", () => {
+test("resume links serve the current resume PDF", () => {
   const expectedSha256 =
-    "34ccc5ca6cc1218c6cccde47b69471fde44d2d6fa824082dd42c6b38993c5bb0";
+    "693e56cc72f123d8a157bd985f3239750b74c194e293ee40311ec8e89ba82434";
   const resumePaths = [
     path.join(root, "SetlurBhrugu_resume.pdf"),
     path.join(root, "resume", "SetlurBhrugu_resume.pdf"),
@@ -42,6 +42,31 @@ test("contact section shows and opens the full LinkedIn profile URL", () => {
     contactPanel,
     /<a href="https:\/\/www\.linkedin\.com\/in\/bhrugu-setlur-931997348"[^>]*>https:\/\/www\.linkedin\.com\/in\/bhrugu-setlur-931997348<\/a>/
   );
+});
+
+test("VIP experience identifies Google Cloud Platform", () => {
+  const experiencePanel = html.match(
+    /<section class="panel" id="panel-experience"[\s\S]*?<\/section>/
+  )?.[0];
+  const vipEntry = experiencePanel?.match(
+    /<h2>VIP: High Performance Computing at NYU<\/h2>[\s\S]*?<\/li>/
+  )?.[0];
+
+  assert.ok(vipEntry, "VIP experience entry is missing");
+  assert.match(vipEntry, /Google Cloud Platform \(GCP\)/);
+});
+
+test("mobile About portrait is centered in its stacked layout", () => {
+  const mobileStart = css.indexOf("@media (max-width: 820px)");
+  const mobileEnd = css.indexOf("@media (max-width: 700px)", mobileStart);
+  const mobileCss = css.slice(mobileStart, mobileEnd);
+  const aboutPhotoRule = mobileCss.match(/\.about-photo\s*{([\s\S]*?)}/)?.[1];
+
+  assert.notEqual(mobileStart, -1, "Mobile breakpoint is missing");
+  assert.notEqual(mobileEnd, -1, "Next mobile breakpoint is missing");
+  assert.ok(aboutPhotoRule, "Mobile About portrait rule is missing");
+  assert.match(aboutPhotoRule, /display:\s*block;/);
+  assert.match(aboutPhotoRule, /margin-inline:\s*auto;/);
 });
 
 test("projects chip exposes Mood Sorter as its sixth core", () => {
