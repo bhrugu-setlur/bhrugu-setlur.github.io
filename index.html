@@ -72,11 +72,11 @@
               <span class="b-name">Projects</span>
               <span class="b-sub mono">U2</span>
               <span class="b-tiles cores-gpu" aria-hidden="true">
+                <span class="core"><i>SPHERRA</i></span>
                 <span class="core"><i>CPU·RTL</i></span>
                 <span class="core"><i>LINELAB</i></span>
                 <span class="core"><i>GROUPLY</i></span>
                 <span class="core"><i>SHUFFLER</i></span>
-                <span class="core"><i>FENCE·RIG</i></span>
                 <span class="core"><i>MOOD·SORT</i></span>
               </span>
             </button>
@@ -276,6 +276,42 @@
           <span class="panel-tag mono">U2</span>
         </div>
         <h1>Projects</h1>
+
+        <article class="datasheet">
+          <div class="datasheet-head mono">
+            <span>Project datasheet · vector search</span>
+            <span>Rust · 768D embeddings</span>
+          </div>
+          <div class="datasheet-grid">
+            <div class="datasheet-copy">
+              <h2>Spherra</h2>
+              <p>
+                A local, embedded vector index in Rust for 768-dimensional embeddings. Each
+                vector goes through a randomized Hadamard rotation so its coordinates are
+                about the same size, then gets rounded to a small grid with a stored
+                correction, shrinking it from 3,072 bytes to 484. Search runs only on the
+                compressed copies, and every result comes with a proven range that contains
+                its true score. Commits are crash-safe, and rows can be appended later.
+              </p>
+              <a
+                class="text-link"
+                href="https://github.com/bhrugusetlur-art/spherra"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View repository
+              </a>
+            </div>
+            <dl class="spec-table">
+              <div><dt>Compression</dt><dd>3,072 → 484 bytes per vector · 6.3x smaller</dd></div>
+              <div><dt>Recall@10</dt><dd>0.9255 generated (1M) · 0.9770 MS MARCO (100K) · 0.9234 DPR (1M)</dd></div>
+              <div><dt>Latency</dt><dd>72 ms median · 114 ms p99 at 1M rows on an M1 Pro</dd></div>
+              <div><dt>Scale</dt><dd>10M rows searched in 3.86 GB peak memory</dd></div>
+              <div><dt>Verification</dt><dd>218 tests · score ranges held on 14,000 of 14,000 checked hits</dd></div>
+              <div><dt>Search</dt><dd>Cosine and dot product · crash-safe commits · append</dd></div>
+            </dl>
+          </div>
+        </article>
 
         <article class="datasheet">
           <div class="datasheet-head mono">

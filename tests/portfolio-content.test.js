@@ -79,6 +79,16 @@ test("projects chip exposes Mood Sorter as its sixth core", () => {
   assert.match(projectsButton, /MOOD·SORT/);
 });
 
+test("projects chip leads with Spherra in place of the fencing rig", () => {
+  const projectsButton = html.match(
+    /<button class="block b-proj"[\s\S]*?<\/button>/
+  )?.[0];
+  const firstCore = projectsButton?.match(/<span class="core"><i>([^<]*)<\/i><\/span>/)?.[1];
+
+  assert.equal(firstCore, "SPHERRA");
+  assert.doesNotMatch(projectsButton, /FENCE·RIG/);
+});
+
 test("projects GPU grid gives all six cores equal-sized cells", () => {
   const projectsButton = html.match(
     /<button class="block b-proj"[\s\S]*?<\/button>/
@@ -103,6 +113,17 @@ test("projects GPU grid gives all six cores equal-sized cells", () => {
     /\.cores-gpu \.core:first-child\s*{[^}]*grid-area:/,
     "Projects grid must not give the first core a larger span"
   );
+});
+
+test("Spherra is the first project in the projects panel", () => {
+  const projectsPanel = html.match(
+    /<section class="panel" id="panel-projects"[\s\S]*?<\/section>/
+  )?.[0];
+  const firstArticle = projectsPanel?.match(/<article[\s\S]*?<\/article>/)?.[0];
+
+  assert.ok(firstArticle, "Projects panel has no project articles");
+  assert.match(firstArticle, /<h2>Spherra<\/h2>/);
+  assert.match(firstArticle, /https:\/\/github\.com\/bhrugusetlur-art\/spherra/);
 });
 
 test("Mood Sorter leads software projects with its repository and demo video", () => {
