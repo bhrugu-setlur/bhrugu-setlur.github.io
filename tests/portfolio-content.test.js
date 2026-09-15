@@ -10,7 +10,7 @@ const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 
 test("resume links serve the current resume PDF", () => {
   const expectedSha256 =
-    "321f665fa06764982c97c6f71b255f7a06f134279d2c5c9088c17a5ccd21f389";
+    "342217435fd71491be239dec61064b43a13bdfbb102e48684cfca068d09e2386";
   const resumePaths = [
     path.join(root, "SetlurBhrugu_resume.pdf"),
     path.join(root, "resume", "SetlurBhrugu_resume.pdf"),
@@ -134,7 +134,7 @@ test("Spherra is the first project in the projects panel", () => {
 
   assert.ok(firstArticle, "Projects panel has no project articles");
   assert.match(firstArticle, /<h2>Spherra<\/h2>/);
-  assert.match(firstArticle, /https:\/\/github\.com\/bhrugusetlur-art\/spherra/);
+  assert.match(firstArticle, /https:\/\/github\.com\/bhrugu-setlur\/spherra/);
 });
 
 test("Mood Sorter leads software projects with its repository and demo video", () => {
@@ -154,7 +154,7 @@ test("Mood Sorter leads software projects with its repository and demo video", (
   const moodSorterArticle = html.slice(moodSorterArticleStart, moodSorterArticleEnd);
   assert.match(
     moodSorterArticle,
-    /https:\/\/github\.com\/bhrugusetlur-art\/spotify-sorting/
+    /https:\/\/github\.com\/bhrugu-setlur\/spotify-sorting/
   );
   assert.match(moodSorterArticle, /src="\.\/videos\/mood-sorter-demo\.mp4"/);
   assert.match(moodSorterArticle, /poster="\.\/images\/poster-mood-sorter-demo\.jpg"/);
