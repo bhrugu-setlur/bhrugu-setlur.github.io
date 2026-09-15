@@ -69,6 +69,17 @@ test("mobile About portrait is centered in its stacked layout", () => {
   assert.match(aboutPhotoRule, /margin-inline:\s*auto;/);
 });
 
+test("Spherra and CPU datasheets show their README animations", () => {
+  const datasheets = html.match(/<article class="datasheet">[\s\S]*?<\/article>/g) || [];
+  const expected = ["./images/spherra-transform-animation.svg", "./images/cpu-fpga-demo.gif"];
+
+  assert.equal(datasheets.length, 2);
+  expected.forEach((src, i) => {
+    assert.match(datasheets[i], new RegExp(`<figure class="datasheet-media">[\\s\\S]*src="${src}"`));
+    assert.ok(fs.existsSync(path.join(root, src)), `${src} is missing`);
+  });
+});
+
 test("projects chip exposes Mood Sorter as its sixth core", () => {
   const projectsButton = html.match(
     /<button class="block b-proj"[\s\S]*?<\/button>/

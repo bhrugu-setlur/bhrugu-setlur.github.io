@@ -612,6 +612,26 @@ button.block:hover::after {
   padding: 1.5rem 1.4rem 1.75rem;
 }
 
+/* Full-width animation under the copy and spec table, so it stays readable at
+   every breakpoint instead of being squeezed into one grid column. */
+.datasheet-media {
+  margin: 0;
+  padding: 0 1.4rem 1.5rem;
+}
+
+.datasheet-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule-2);
+}
+
+.datasheet-media figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.73rem;
+  color: var(--ink-3);
+}
+
 .spec-table {
   margin: 0;
   border: 1px solid var(--rule);
