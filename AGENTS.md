@@ -3,8 +3,8 @@
 ## Facts confirmed by the owner
 
 - **The 8-bit CPU ran on a physical Basys 3 FPGA board.** The owner confirmed this on
-  2026-09-14. The `cpu-design` repo README still says no board run is recorded; that text is
-  out of date. Do not remove or soften the Basys 3 claim on the site or the resume.
+  2026-09-14. Do not remove or soften the Basys 3 claim on the site, the resume, or the
+  `cpu-design` repo docs.
 - The Sky130 GDS is project-deck verified only. No chip has been fabricated or foundry
   signed off.
 - If the owner states a fact about their own work, take it as true. Do not go verify it.
