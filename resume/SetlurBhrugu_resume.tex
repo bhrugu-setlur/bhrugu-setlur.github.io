@@ -145,6 +145,7 @@
         \resumeItem{Built a Rust vector index that compresses 768-dimensional embeddings 6.3x, from 3,072 bytes to 484 bytes per vector.}
         \resumeItem{Spread values evenly with a randomized Hadamard transform, stored 4-bit codes per coordinate, and product-quantized the error.}
         \resumeItem{Reached 0.92 to 0.98 recall@10 against exact search on up to 1M real search-query and synthetic embeddings.}
+        \resumeItem{Raised recall@10 from 0.9095 to 0.9255 with no extra storage by dividing each refined score by its rebuilt vector's length.}
         \resumeItem{Searched 1M vectors in 72 ms median and 114 ms p99 latency on an M1 Pro, and 10M vectors within 3.86 GB of peak memory.}
         \resumeItem{Verified the fast scan kernel against a reference scorer on 2,073,760 scores with 0 differences.}
       \resumeItemListEnd
@@ -155,6 +156,7 @@
       \resumeItemListStart
         \resumeItem{Designed an 8-bit Harvard CPU in Verilog with a 12-instruction ISA, a direct-mapped L1 cache, and a 4-way LRU L2 cache.}
         \resumeItem{Added virtual memory with a 4-entry TLB and hardware page-table walks, tested by 15 Verilog suites and on a Basys 3 FPGA.}
+        \resumeItem{Flushed the TLB on page-table writes and froze the CPU on page faults, showing the faulting address on the Basys 3 LEDs.}
         \resumeItem{Hardened the core to GDS on SkyWater 130 nm with OpenROAD: 12,778 cells, clean DRC, and project-deck LVS on all 146 pairs.}
         \resumeItem{Met the 10 MHz timing target with 90.29 ns of worst setup slack, and wrote a two-pass C++ assembler for the CPU's programs.}
         \resumeItem{\textbf{Open source:} Merged a regression test into \href{https://github.com/cocotb/cocotb/pull/5700}{\textbf{cocotb}}, a widely used Python framework for RTL verification.}
