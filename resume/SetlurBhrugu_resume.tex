@@ -140,25 +140,26 @@
   \resumeSubHeadingListStart
 
     \resumeProjectHeading
-      {\textbf{8-bit CPU with Virtual Memory \& Cache} $|$ \href{https://github.com/bhrugusetlur-art/cpu-design}{github.com/bhrugusetlur-art/cpu-design}}{Jun 2026 - Aug 2026}
-      \resumeItemListStart
-        \resumeItem{Designed the RTL for an 8-bit Harvard CPU: a 12-instruction ISA, ALU, register file, control unit, and datapath, backed by a write-back cache hierarchy with a direct-mapped L1 and a 4-way set-associative L2 using LRU replacement.}
-        \resumeItem{Added virtual memory with a 4-entry TLB, hardware page-table walks, and page-fault handling, verified across 15 Verilog regression suites covering ISA operations, cache and LRU eviction, TLB walks, and frozen fault state, in simulation and on a Basys 3 FPGA.}
-        \resumeItem{Hardened the core to GDS on SkyWater 130 nm with OpenROAD: 12,778 standard cells (3,824 sequential) at about 19\% utilization, with clean DRC and antenna checks and project-deck LVS matching all 146 circuit pairs.}
-        \resumeItem{Met the 10 MHz timing target with 90.29 ns worst setup slack, an estimated 103 MHz maximum, and wrote a two-pass C++ assembler that resolves labels and emits machine code for FPGA programs.}
-        \resumeItem{\textbf{Open source:} Merged a regression test into \href{https://github.com/cocotb/cocotb/pull/5700}{\textbf{cocotb}}, a widely used Python framework for RTL verification.}
-      \resumeItemListEnd
-      {\small Tech: Verilog, RTL Design, FPGA (Xilinx Artix-7), Vivado, Icarus Verilog, cocotb, GTKWave, OpenROAD, Sky130, C++}\vspace{3pt}
-
-    \resumeProjectHeading
       {\textbf{Spherra} $|$ \textbf{Compressed Vector Search in Rust} $|$ \href{https://github.com/bhrugusetlur-art/spherra}{github.com/bhrugusetlur-art/spherra}}{Aug 2026 - Sep 2026}
       \resumeItemListStart
-        \resumeItem{Built a Rust vector index that shrinks 768-dimensional embeddings 6.3x with Hadamard rotation and product quantization.}
+        \resumeItem{Built a Rust vector index that compresses 768-dimensional embeddings 6.3x, from 3,072 bytes to 484 bytes per vector.}
+        \resumeItem{Spread values evenly with a randomized Hadamard transform, stored 4-bit codes per coordinate, and product-quantized the error.}
         \resumeItem{Reached 0.92 to 0.98 recall@10 against exact search on up to 1M real search-query and synthetic embeddings.}
         \resumeItem{Searched 1M vectors in 72 ms median and 114 ms p99 latency on an M1 Pro, and 10M vectors within 3.86 GB of peak memory.}
         \resumeItem{Verified the fast scan kernel against a reference scorer on 2,073,760 scores with 0 differences.}
       \resumeItemListEnd
       {\small Tech: Rust, Product Quantization, k-means, Hadamard Transform, MS MARCO, DPR, SciFact, MovieLens, synthetic correlated vectors}\vspace{3pt}
+
+    \resumeProjectHeading
+      {\textbf{8-bit CPU with Virtual Memory \& Cache} $|$ \href{https://github.com/bhrugusetlur-art/cpu-design}{github.com/bhrugusetlur-art/cpu-design}}{Jun 2026 - Aug 2026}
+      \resumeItemListStart
+        \resumeItem{Designed an 8-bit Harvard CPU in Verilog with a 12-instruction ISA, a direct-mapped L1 cache, and a 4-way LRU L2 cache.}
+        \resumeItem{Added virtual memory with a 4-entry TLB and hardware page-table walks, tested by 15 Verilog suites and on a Basys 3 FPGA.}
+        \resumeItem{Hardened the core to GDS on SkyWater 130 nm with OpenROAD: 12,778 cells, clean DRC, and project-deck LVS on all 146 pairs.}
+        \resumeItem{Met the 10 MHz timing target with 90.29 ns of worst setup slack, and wrote a two-pass C++ assembler for the CPU's programs.}
+        \resumeItem{\textbf{Open source:} Merged a regression test into \href{https://github.com/cocotb/cocotb/pull/5700}{\textbf{cocotb}}, a widely used Python framework for RTL verification.}
+      \resumeItemListEnd
+      {\small Tech: Verilog, RTL Design, FPGA (Xilinx Artix-7), Vivado, Icarus Verilog, cocotb, GTKWave, OpenROAD, Sky130, C++}\vspace{3pt}
 
   \resumeSubHeadingListEnd
 

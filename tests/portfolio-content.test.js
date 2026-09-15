@@ -10,7 +10,7 @@ const css = fs.readFileSync(path.join(root, "styles.css"), "utf8");
 
 test("resume links serve the current resume PDF", () => {
   const expectedSha256 =
-    "5a3882c829de63d64b8e6611f5dd14da1f2ebe7a12dc3d1a6c9519e35886ae71";
+    "de3a9fa5289511c97a7ece0e3f61e9e9358ced5e8dd6bb81753a6aa1a66194cb";
   const resumePaths = [
     path.join(root, "SetlurBhrugu_resume.pdf"),
     path.join(root, "resume", "SetlurBhrugu_resume.pdf"),
